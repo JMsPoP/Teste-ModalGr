@@ -1,0 +1,127 @@
+/* Fundo geral da página */
+body {
+  background-color: #121212; /* Cor de fundo escura */
+  color: #f5f5f5; /* Cor de texto clara para contraste */
+  font-family: 'Arial', sans-serif; /* Fonte simples e legível */
+  margin: 0; /* Remove margens padrão */
+  padding: 0; /* Remove padding padrão */
+  height: 100vh; /* Define a altura da página para ocupar 100% da altura da janela */
+  display: flex;
+  flex-direction: column; /* Garante que o conteúdo se estique corretamente */
+  justify-content: flex-start; /* Alinha o conteúdo ao topo da tela */
+  background-size: cover; /* Cobre toda a área da tela */
+  background-position: center; /* Centraliza o fundo */
+  background-image: linear-gradient(145deg, #1f1f1f, #111); /* Gradiente suave para o fundo */
+}
+
+/* Estilo para o formulário de registro */
+.register-block {
+  background-color: #1f1f1f; /* Fundo do bloco de registro */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.register-sec {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #f5f5f5;
+  margin-bottom: 20px;
+}
+
+.register-form .form-group label {
+  color: #aaa; /* Cor mais suave para os rótulos */
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.register-form .form-control {
+  background-color: #2a2a2a; /* Fundo escuro para os inputs */
+  border: 1px solid #444; /* Borda mais suave */
+  color: #f5f5f5;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.register-form .form-control:focus {
+  background-color: #333; /* Fundo escuro ao focar no campo */
+  border-color: #7a4eeb; /* Borda roxa ao focar */
+  outline: none;
+  box-shadow: 0 0 8px rgba(122, 78, 235, 0.7); /* Brilho ao focar */
+}
+
+/* Botões com efeito Neon Roxo */
+button[type="submit"] {
+  background-color: #7a4eeb; /* Cor de fundo neon roxo */
+  color: #fff;
+  border: 2px solid #7a4eeb; /* Borda neon roxa */
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 20px rgba(122, 78, 235, 1), 0 0 30px rgba(122, 78, 235, 0.8); /* Aumentando a sombra neon */
+  text-shadow: 0 0 10px #7a4eeb, 0 0 20px #7a4eeb, 0 0 30px #7a4eeb, 0 0 40px #7a4eeb; /* Brilho neon mais intenso */
+}
+
+button[type="submit"]:hover {
+  background-color: #9f6bfa; /* Roxo mais claro no hover */
+  border-color: #9f6bfa; /* Alterando a borda no hover */
+  box-shadow: 0 0 40px rgba(159, 107, 250, 1), 0 0 60px rgba(159, 107, 250, 0.8); /* Sombra muito mais forte no hover */
+  text-shadow: 0 0 20px #9f6bfa, 0 0 40px #9f6bfa, 0 0 50px #9f6bfa; /* Intensificando o brilho no hover */
+}
+
+button[type="submit"]:active {
+  background-color: #7a4eeb; /* Mantém o tom roxo neon no active */
+  border-color: #7a4eeb;
+  box-shadow: 0 0 60px rgba(122, 78, 235, 1), 0 0 80px rgba(122, 78, 235, 0.8); /* Sombra muito mais intensa no active */
+  text-shadow: 0 0 30px #7a4eeb, 0 0 60px #7a4eeb, 0 0 90px #7a4eeb; /* Brilho mais intenso no active */
+}
+/* Estilo para os blocos de usuário */
+.app-userinfo {
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  padding: 15px;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.app-userinfo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.app-userinfo p {
+  margin: 10px 0;
+}
+
+/* Estilo para o painel de usuário selecionado */
+.user-info-panel {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  color: #fff;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.user-info-panel h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.user-info-panel p {
+  font-size: 1rem;
+}
+
+/* Efeitos de transição suaves para mudanças de estado */
+.transition-all {
+  transition: all 0.3s ease;
+}

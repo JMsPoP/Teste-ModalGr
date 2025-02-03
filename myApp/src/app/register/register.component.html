@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Usuário</title>
+  
+  <style>
+/* Estilo para o painel de informações do usuário */
+.user-info-panel {
+  background-color: #2a2a2a;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  margin-top: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-info-panel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Sombra mais destacada no hover */
+}
+
+.user-info-panel h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #7a4eeb; /* Cor roxa sem o efeito neon */
+  /* Removido o efeito text-shadow */
+}
+
+.user-info-panel p {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #ddd;
+  /* Removido o efeito text-shadow */
+}
+
+.user-info-panel p strong {
+  color: #f5f5f5;
+  font-weight: 600;
+}
+
+/* Estilo para os botões no formulário */
+button[type="submit"] {
+  background-color: #7a4eeb; /* Cor de fundo roxa sem o neon */
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: none; /* Removido o efeito de sombra neon */
+  /* Removido o text-shadow */
+}
+
+button[type="submit"]:hover {
+  background-color: #9f6bfa; /* Roxo mais claro no hover */
+  border-color: #9f6bfa; /* Alterando a borda no hover */
+  box-shadow: none; /* Removido o efeito de sombra no hover */
+}
+
+button[type="submit"]:active {
+  background-color: #7a4eeb; /* Mantém o tom roxo */
+  border-color: #7a4eeb;
+  box-shadow: none; /* Removido o efeito de sombra no active */
+  /* Removido o text-shadow */
+}
+
+@media (max-width: 768px) {
+  .user-info-panel {
+    padding: 15px;
+  }
+
+  .user-info-panel h2 {
+    font-size: 1.3rem;
+  }
+
+  .user-info-panel p {
+    font-size: 0.9rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <section class="register-block">
+    <div class="container">
+      <div class="row">
+        <div class="col register-sec">
+          <h2 class="text-center">Se Registre</h2>
+
+          <form [formGroup]="userForm" class="register-form" (ngSubmit)="SubmitForm()">
+            <!-- Campo Nome -->
+            <div class="form-group">
+              <label for="name" class="text-uppercase">Nome</label>
+              <input type="text" class="form-control"
+                [class.is-invalid]="userForm.get('name')?.errors && userForm.get('name')?.touched" id="name" formControlName="name">
+              <div *ngIf="userForm.get('name')?.hasError('required')" class="invalid-feedback">O campo nome é obrigatório</div>
+              <div *ngIf="userForm.get('name')?.hasError('maxlength')" class="invalid-feedback">O campo nome não pode ultrapassar 150 caracteres</div>
+            </div>
+
+            <!-- Campo CPF -->
+            <div class="form-group">
+              <label for="cpf" class="text-uppercase">Cpf</label>
+              <input type="text" mask="000.000.000-00" class="form-control"
+                [class.is-invalid]="userForm.get('cpf')?.errors && userForm.get('cpf')?.touched" id="cpf" formControlName="cpf">
+              <div *ngIf="userForm.get('cpf')?.hasError('required')" class="invalid-feedback">O campo cpf é obrigatório</div>
+            </div>
+
+            <!-- Campo Data de Nascimento -->
+            <div class="form-group">
+              <label for="data" class="text-uppercase">Data de nascimento</label>
+              <input type="text" inputmode="numeric" mask="d0/M0/0000" class="form-control"
+                [class.is-invalid]="userForm.get('data')?.errors && userForm.get('data')?.touched" id="data" formControlName="data">
+              <div *ngIf="userForm.get('data')?.hasError('required')" class="invalid-feedback">O campo data é obrigatório</div>
+              <div *ngIf="userForm.get('data')?.hasError('yearValidator')" class="invalid-feedback">A data deve ser de antes de 2025</div>
+            </div>
+
+            <!-- Campo Email -->
+            <div class="form-group">
+              <label for="email" class="text-uppercase">Email</label>
+              <input type="text" class="form-control"
+                [class.is-invalid]="userForm.get('email')?.errors && userForm.get('email')?.touched" id="email" formControlName="email">
+              <div *ngIf="userForm.get('email')?.hasError('required')" class="invalid-feedback">O campo email é obrigatório</div>
+              <div *ngIf="userForm.get('email')?.hasError('maxlength')" class="invalid-feedback">O campo email não pode ultrapassar 200 caracteres</div>
+            </div>
+
+            <!-- Campo Cep -->
+            <div class="form-group">
+              <label for="cep" class="text-uppercase">Cep</label>
+              <input type="text" mask="00000-000" class="form-control"
+                [class.is-invalid]="userForm.get('cep')?.errors && userForm.get('cep')?.touched" id="cep" formControlName="cep">
+              <div *ngIf="userForm.get('cep')?.hasError('required')" class="invalid-feedback">O campo cep é obrigatório</div>
+            </div>
+
+            <!-- Botão Enviar -->
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="row">
+    <app-userinfo
+      (userInfoEmitter)="infoSelectedUser($event)"
+      *ngFor="let user of users" [user]="user" class="col-md-3 mb-3"></app-userinfo>
+  </div>
+
+  <div *ngIf="userSelecionado" class="user-info-panel mt-3 border col-md p-3">
+    <h2>Usuário selecionado</h2>
+    <p><strong>Nome:</strong> {{ userSelecionado.name }}</p>
+    <p><strong>Email:</strong> {{ userSelecionado.email }}</p>
+    <p><strong>Idade:</strong> {{ userSelecionado.data }}</p>
+    <p><strong>Cpf:</strong> {{ userSelecionado.cpf }}</p>
+    <p><strong>Cep:</strong> {{ userSelecionado.cep }}</p>
+    <p><strong>Logradouro:</strong> {{ userSelecionado.logradouro }}</p>
+    <p><strong>Bairro:</strong> {{ userSelecionado.bairro }}</p>
+    <p><strong>Cidade:</strong> {{ userSelecionado.localidade }}</p>
+    <p><strong>Estado:</strong> {{ userSelecionado.uf }}</p>
+  </div>
+
+</body>
+</html>
+
+
+<!--
+          <div class="form-group">
+            <label for="logradouro" class="text-uppercase">Logradouro</label>
+            <input type="text" class="form-control" id="logradouro" formControlName="logradouro">
+          </div>
+-->
+
+
+
+<!--
+          <div class="form-group">
+
+              <span class="text-danger" >
+                 <p> Custom Error Message </p>
+              </span>
+              <div  class="text-center">
+                <div class="spinner-border text-primary " role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+-->
